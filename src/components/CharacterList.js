@@ -16,10 +16,8 @@ export default function CharacterList(props) {
       update(characters)
     })
   }, []);
-
   return (
         <section className="character-list">
-          <Link to="/"><button class="homeButton">Home</button></Link>
           {current.map(character=>{
             return <CharacterCard 
             key={character.id}

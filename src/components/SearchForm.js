@@ -5,22 +5,33 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 let char = [];
 export default function SearchForm() {
-  const [state,setState]=useState();
-  const [x,y]=useState();
+  let [state,setState]=useState([]);
+  let [x,y]=useState();
+
+  // checks if what user typed in isn't empty, if it is, set it to empty string, if not, then sets setState to result 
   function Search(e) {
       let result = char.filter(charter => charter === e.target.value);
-      if(result.length!==0){
-        setState(result[0]);
-      }else{
-        setState('');
+      result.push(e.target.value); 
+      if(e.target.value===''){
+        result.pop();
       }
+      if(result.length!==0){
+        setState([result[0]]);
+      }else{
+        setState([]);
+      }
+      
   }
   function submitForm(e) {
-    e.preventDefault();
+    e.preventDefault();;
     if(state.length!==0){
     y(state);
     }
+    if(state.length===0){
+      y(undefined);
+    }
   }
+
 
 
 
@@ -28,8 +39,8 @@ export default function SearchForm() {
   //////////////////////////////////////////////////////////////////
 
 
-  const url="https://rickandmortyapi.com/api/character/";
-  const [current,update]=useState([]);
+  let url="https://rickandmortyapi.com/api/character/";
+  let [current,update]=useState([]);
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
@@ -41,20 +52,26 @@ export default function SearchForm() {
   }, []);
   return (
     <section className="search-form">
-      <label htmlFor="search"><h3>Quick Access</h3></label>
+      <Link className="homeButton"to="/"><button>Home</button></Link>
+      <form>
+      <label className="searchBar" htmlFor="search"><h3>Quick Access</h3></label>
+      <div class="searchInput">
       <input 
       id="search"
       type="text"
       placeholder="Seach a character"
       onChange={Search}
       />
-      <Link to="/characters/search"><button onClick={submitForm} type="submit">Search</button></Link>
-      {current.map(character=>{
-            console.log(character.name)
-            char.push(character.name);
-            if(character.name===x){
+      <button className="submit" onClick={submitForm} type="submit">Search</button>
+      </div>
+      </form>
+       <div className="searchResult">
+      {current.map(character=>{ 
+            char.push(character.name)
+            if(typeof x!=='undefined'){
+              if((character.name).toLowerCase().includes(x[0].toLowerCase())){
                 return (
-                <Card>
+                <Card className="result">
                 <Image src={character.image} wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>{character.name}</Card.Header>
@@ -74,7 +91,14 @@ export default function SearchForm() {
               </Card>
                 )
             }
+            if(state.length===0){
+              return(
+                <div></div>
+              )
+            }
+            }
           })}
+       </div>
     </section>
   );
 }
