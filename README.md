@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: client-site routing is downloading everything from the server with first initial load and save it locally, so there's no more server requests when browsing through pages.
 
 ## Project Set Up
 

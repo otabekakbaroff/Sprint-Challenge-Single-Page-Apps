@@ -37,3 +37,80 @@ main {
 header h1 {
   text-align: center;
 }
+.HomeImage{
+  display:flex;
+  justify-content: center;
+}
+.main-img{
+  width: 90%;
+  height: 75vh;
+}
+.Caption{
+  display:flex;
+  justify-content: center;
+}
+.character-list{
+  display:flex;
+  flex-wrap: wrap;
+}
+.card{
+  margin:2%;
+}
+form{
+  height: 10vh;
+  background-color:#affff0;
+}
+.homeButton{
+  float: right;
+  height: 5vh;
+  margin-right:3.5%;
+}
+.homeButton button{
+  outline: none;
+  background-color: #9bc8ff;;
+  color:black;
+  border-radius: 40px;
+  width:160%;
+  height: 4vh;
+}
+.searchBar{
+  margin: 0% 0% 2% 2%;
+  display:flex;
+  justify-content: center;
+}
+.searchInput{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+.searchInput input{
+  border-radius: 15px;
+  height:3.5vh;
+  width:40%;
+  outline:none;
+}
+.searchInput input:hover{
+  background-color:#a4ffa4;  
+}
+.submit{
+  outline: none;
+  border-radius: 15px;
+  padding: 0% 1% 0% 1%;
+  background-color: #ccd0c6;
+  color: #028aff;
+}
+.submit:hover{
+  background-color:#a4ffa4;
+  color:#000000;
+}
+.search-form{
+  background-color:#f9f9cd;
+}
+.searchResult{
+  display:flex;
+  flex-wrap: wrap;
+}
+.ui.card.result{
+  margin: 2.5% 1.5% 2.5% 1.5% !important;
+}
+
